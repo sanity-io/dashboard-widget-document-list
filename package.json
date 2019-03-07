@@ -1,0 +1,49 @@
+{
+  "name": "sanity-plugin-dashboard-widget-document-list",
+  "version": "0.0.1",
+  "author": "Thomas Drevon <thomas@sanity.io>",
+  "description": "Example dashboard widget for Sanity Content Studio",
+  "homepage": "https://github.com/sanity-io/dashboard-widget-document-list#readme",
+  "public": true,
+  "keywords": [
+    "sanity",
+    "pluign",
+    "part",
+    "dashboard",
+    "widget",
+    "documents"
+  ],
+  "main": "lib/index.js",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanity-io/dashboard-widget-document-list/issues"
+  },
+  "scripts": {
+    "build": "babel src -d lib --copy-files",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanity-io/dashboard-widget-document-list.git"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-syntax-class-properties": "^6.13.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.3.0",
+    "eslint-config-sanity": "^2.1.4",
+    "eslint-plugin-react": "^7.1.0"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.6 || ^16",
+    "react": "^16"
+  },
+  "dependencies": {
+    "@sanity/base": "^0.140.9",
+    "@sanity/components": "^0.140.9",
+    "lodash": "^4.17.11"
+  }
+}
