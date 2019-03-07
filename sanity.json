@@ -5,7 +5,7 @@
   },
   "parts": [
     {
-      "name": "part:@sanity/dashboard/widget/document-count",
+      "name": "part:@sanity/dashboard/widget/document-list",
       "implements": "part:@sanity/dashboard/widget",
       "path": "index.js"
     }
