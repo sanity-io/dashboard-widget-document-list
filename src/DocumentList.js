@@ -45,14 +45,14 @@ class DocumentList extends React.Component {
 
     if (types) {
       return {
-        query: '*[_type in $types] | order($order) [0...$limit]',
-        params: {types: intersection(types, documentTypes), order, limit}
+        query: `*[_type in $types] | order(${order}) [0...${limit}]`,
+        params: {types: intersection(types, documentTypes)}
       }
     }
 
     return {
-      query: '*[_type in $types] | order($order) [0...$limit]',
-      params: {types: documentTypes, order, limit}
+      query: `*[_type in $types] | order(${order}) [0...${limit}]`,
+      params: {types: documentTypes}
     }
   }
 
@@ -92,20 +92,20 @@ class DocumentList extends React.Component {
             }}
           </QueryContainer>
         </List>
-        {types &&
-          types.length === 1 && (
-            <div className={styles.buttonContainer}>
-              <IntentButton
-                bleed
-                color="primary"
-                kind="simple"
-                intent="create"
-                params={{type: types[0]}}
-              >
+        {types
+          && types.length === 1 && (
+          <div className={styles.buttonContainer}>
+            <IntentButton
+              bleed
+              color="primary"
+              kind="simple"
+              intent="create"
+              params={{type: types[0]}}
+            >
                 Create new {types[0]}
-              </IntentButton>
-            </div>
-          )}
+            </IntentButton>
+          </div>
+        )}
       </div>
     )
   }
