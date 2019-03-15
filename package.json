@@ -14,7 +14,7 @@
     "documents"
   ],
   "main": "lib/index.js",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/sanity-io/dashboard-widget-document-list/issues"
   },
