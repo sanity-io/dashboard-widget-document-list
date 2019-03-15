@@ -1,10 +1,10 @@
 {
+  "public": true,
   "name": "sanity-plugin-dashboard-widget-document-list",
   "version": "0.0.3",
   "author": "Thomas Drevon <thomas@sanity.io>",
   "description": "Example dashboard widget for Sanity Content Studio",
   "homepage": "https://github.com/sanity-io/dashboard-widget-document-list#readme",
-  "public": true,
   "keywords": [
     "sanity",
     "pluign",
@@ -20,6 +20,9 @@
   },
   "scripts": {
     "build": "babel src -d lib --copy-files",
+    "clean": "rimraf lib",
+    "prebuild": "npm run clean",
+    "prepublishOnly": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -35,7 +38,8 @@
     "babel-preset-react": "^6.24.1",
     "eslint": "^4.3.0",
     "eslint-config-sanity": "^2.1.4",
-    "eslint-plugin-react": "^7.1.0"
+    "eslint-plugin-react": "^7.1.0",
+    "rimraf": "^2.6.3"
   },
   "peerDependencies": {
     "prop-types": "^15.6 || ^16",
