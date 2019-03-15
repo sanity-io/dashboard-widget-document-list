@@ -1,8 +1,8 @@
 {
   "public": true,
   "name": "sanity-plugin-dashboard-widget-document-list",
-  "version": "0.0.3",
-  "author": "Thomas Drevon <thomas@sanity.io>",
+  "version": "0.0.4",
+  "author": "Sanity.io <hello@sanity.io>",
   "description": "Example dashboard widget for Sanity Content Studio",
   "homepage": "https://github.com/sanity-io/dashboard-widget-document-list#readme",
   "keywords": [
