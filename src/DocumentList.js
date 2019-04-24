@@ -65,44 +65,39 @@ class DocumentList extends React.Component {
         <header className={styles.header}>
           <h2 className={styles.title}>{title}</h2>
         </header>
-        <List className={styles.list}>
-          <QueryContainer query={query} params={params}>
-            {({result, loading, error, onRetry}) => {
-              if (loading) {
-                return <Spinner center message="Loading items…" />
-              }
-              const items = result ? result.documents : []
-              return items.map(item => {
-                const type = schema.get(item._type)
-                return (
-                  <Item key={item._id}>
-                    <IntentLink
-                      intent="edit"
-                      params={{
-                        type: item._type,
-                        id: item._id
-                      }}
-                      className={styles.link}
-                    >
-                      <SanityPreview layout="default" type={type} value={item} key={item._id} />
-                    </IntentLink>
-                  </Item>
-                )
-              })
-            }}
-          </QueryContainer>
-        </List>
-        {types
-          && types.length === 1 && (
-          <div className={styles.buttonContainer}>
-            <IntentButton
-              bleed
-              color="primary"
-              kind="simple"
-              intent="create"
-              params={{type: types[0]}}
-            >
-                Create new {types[0]}
+        <div className={styles.content}>
+          <List>
+            <QueryContainer query={query} params={params}>
+              {({result, loading, error, onRetry}) => {
+                if (loading) {
+                  return <Spinner center message="Loading items…" />
+                }
+                const items = result ? result.documents : []
+                return items.map(item => {
+                  const type = schema.get(item._type)
+                  return (
+                    <Item key={item._id}>
+                      <IntentLink
+                        intent="edit"
+                        params={{
+                          type: item._type,
+                          id: item._id
+                        }}
+                        className={styles.link}
+                      >
+                        <SanityPreview layout="default" type={type} value={item} key={item._id} />
+                      </IntentLink>
+                    </Item>
+                  )
+                })
+              }}
+            </QueryContainer>
+          </List>
+        </div>
+        {types && types.length === 1 && (
+          <div className={styles.footer}>
+            <IntentButton bleed color="primary" kind="simple" intent="create" params={{type: types[0]}}>
+              Create new {types[0]}
             </IntentButton>
           </div>
         )}
