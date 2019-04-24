@@ -45,13 +45,13 @@ class DocumentList extends React.Component {
 
     if (types) {
       return {
-        query: `*[_type in $types] | order(${order}) [0...${limit}]`,
+        query: `*[_type in $types && !(_id in path("drafts.**"))] | order(${order}) [0...${limit}]`,
         params: {types: intersection(types, documentTypes)}
       }
     }
 
     return {
-      query: `*[_type in $types] | order(${order}) [0...${limit}]`,
+      query: `*[_type in $types && !(_id in path("drafts.**"))] | order(${order}) [0...${limit}]`,
       params: {types: documentTypes}
     }
   }
