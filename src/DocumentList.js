@@ -7,37 +7,17 @@ import schema from 'part:@sanity/base/schema'
 import IntentButton from 'part:@sanity/components/buttons/intent'
 import {List, Item} from 'part:@sanity/components/lists/default'
 import {intersection} from 'lodash'
-import {getSubscription, performQuery} from './sanityConnector'
+import {getSubscription} from './sanityConnector'
 import styles from './DocumentList.css'
 
 const schemaTypeNames = schema.getTypeNames()
 
-function prepareDocumentList(incoming, overlayDrafts) {
-  if (!incoming) {
-    return Promise.resolve([])
-  }
-  const documents = Array.isArray(incoming) ? incoming : [incoming]
-
-  if (!overlayDrafts) {
-    return Promise.resolve(documents)
-  }
-  const ids = documents
-    .filter(doc => !doc._id.startsWith('drafts.'))
-    .map(doc => `drafts.${doc._id}`)
-  return performQuery('*[_id in $ids]', {ids}).then(drafts => {
-    const outgoing = documents.map(doc => {
-      const foundDraft = drafts.find(draft => draft._id === `drafts.${doc._id}`)
-      return foundDraft || doc
-    })
-    return outgoing
-  })
-}
-
-
 class DocumentList extends React.Component {
 
   state = {
-    documents: null
+    documents: null,
+    loading: false,
+    error: null
   }
 
   static propTypes = {
@@ -47,7 +27,7 @@ class DocumentList extends React.Component {
     queryParams: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     order: PropTypes.string,
     limit: PropTypes.number,
-    overlayDrafts: PropTypes.boolean
+    overlayDrafts: PropTypes.bool
   }
 
   static defaultProps = {
@@ -61,26 +41,20 @@ class DocumentList extends React.Component {
   }
 
   componentDidMount = () => {
-    const {query, overlayDrafts} = this.props
+    const {query, overlayDrafts, limit} = this.props
     const {assembledQuery, params} = this.assembleQuery()
-    console.log('query/params', assembledQuery, params)
-
     if (!assembledQuery) {
       return
     }
 
     this.unsubscribe()
-    this.subscription = getSubscription(assembledQuery, params).subscribe(event => {
-      console.log('event.result', event.result)
-
-      // Substitute documents for drafts if overlayDrafts prop is set
-      // Or if query prop is present
-      // in which case we assume the Studio knows what it's doing
-      prepareDocumentList(event.result, overlayDrafts || !!query).then(documents => {
-        console.log('prepared documents', documents)
-        this.setState({documents})
+    this.subscription = getSubscription(assembledQuery, params, overlayDrafts && !query)
+      .subscribe({
+        next: documents =>
+          this.setState({documents: documents.slice(0, limit), loading: false}),
+        error: error =>
+          this.setState({error, query})
       })
-    })
   }
 
   componentWillUnmount() {
@@ -104,16 +78,9 @@ class DocumentList extends React.Component {
       return schemaType.type && schemaType.type.name === 'document'
     })
 
-    if (types) {
-      return {
-        assembledQuery: `*[_type in $types] | order(${order}) [0...${limit}]`,
-        params: {types: intersection(types, documentTypes)}
-      }
-    }
-
     return {
-      assembledQuery: `*[_type in $types] | order(${order}) [0...${limit}]`,
-      params: {types: documentTypes}
+      assembledQuery: `*[_type in $types] | order(${order}) [0...${limit * 2}]`,
+      params: {types: types ? intersection(types, documentTypes) : documentTypes}
     }
   }
 
@@ -128,9 +95,10 @@ class DocumentList extends React.Component {
           <h2 className={styles.title}>{title}</h2>
         </header>
         <div className={styles.content}>
-          {loading && <Spinner center message="Loading items…" />}
+          {loading && <Spinner center message="Loading..." />}
+          {(!documents && !loading) && <div>no docs</div>}
           <List>
-            {documents.map(doc => {
+            {documents && documents.map(doc => {
               const type = schema.get(doc._type)
               return (
                 <Item key={doc._id}>
