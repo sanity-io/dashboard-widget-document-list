@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import React from 'react'
 import PropTypes from 'prop-types'
 import {IntentLink} from 'part:@sanity/base/router'
@@ -87,7 +88,7 @@ class DocumentList extends React.Component {
 
   render() {
     const {title, types} = this.props
-    const {documents, loading} = this.state
+    const {documents, loading, error} = this.state
 
     return (
       <div className={styles.container}>
@@ -95,8 +96,9 @@ class DocumentList extends React.Component {
           <h2 className={styles.title}>{title}</h2>
         </header>
         <div className={styles.content}>
-          {loading && <Spinner center message="Loading..." />}
-          {(!documents && !loading) && <div>no docs</div>}
+          {error && <div>{error.message}</div>}
+          {!error && loading && <Spinner center message="Loading..." />}
+          {(!error && !documents && !loading) && <div>Could not locate any documents :/</div>}
           <List>
             {documents && documents.map(doc => {
               const type = schema.get(doc._type)

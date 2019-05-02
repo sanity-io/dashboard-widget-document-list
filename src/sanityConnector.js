@@ -1,4 +1,5 @@
-import {switchMap} from 'rxjs/operators'
+import {of as observableOf} from 'rxjs'
+import {switchMap, delay, tap, mergeMap} from 'rxjs/operators'
 import {uniqBy} from 'lodash'
 import sanityClient from 'part:@sanity/base/client'
 
@@ -24,6 +25,8 @@ const prepareDocumentList = (incoming, overlayDrafts) => {
       return foundDraft || doc
     })
     return uniqBy(outgoing, '_id')
+  }).catch(error => {
+    throw new Error(`Problems fetching docs ${ids}. Error: ${error.message}`)
   })
 }
 
@@ -31,9 +34,17 @@ const getSubscription = (query, params, overlayDrafts) =>
   sanityClient
     .listen(query, params, {events: ['welcome', 'mutation'], includeResult: false, visibility: 'query'})
     .pipe(switchMap(event => {
-      return sanityClient.fetch(query, params).then(incoming => {
-        return prepareDocumentList(incoming, overlayDrafts)
-      })
+      return observableOf(1).pipe(
+        event.type === 'welcome' ? tap() : delay(1000),
+        mergeMap(() => sanityClient.fetch(query, params).then(incoming => {
+          return prepareDocumentList(incoming, overlayDrafts)
+        }).catch(error => {
+          if (error.message.startsWith('Problems fetching docs')) {
+            throw error
+          }
+          throw new Error(`Query failed ${query} and ${JSON.stringify(params)}. Error: ${error.message}`)
+        }))
+      )
     }))
 
 
