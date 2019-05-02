@@ -17,7 +17,7 @@ class DocumentList extends React.Component {
 
   state = {
     documents: null,
-    loading: false,
+    loading: true,
     error: null
   }
 
@@ -27,14 +27,12 @@ class DocumentList extends React.Component {
     query: PropTypes.string,
     queryParams: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     order: PropTypes.string,
-    limit: PropTypes.number,
-    overlayDrafts: PropTypes.bool
+    limit: PropTypes.number
   }
 
   static defaultProps = {
     title: 'Last created',
     order: '_createdAt desc',
-    overlayDrafts: true,
     limit: 10,
     types: null,
     query: null,
@@ -42,19 +40,19 @@ class DocumentList extends React.Component {
   }
 
   componentDidMount = () => {
-    const {query, overlayDrafts, limit} = this.props
+    const {query, limit} = this.props
     const {assembledQuery, params} = this.assembleQuery()
     if (!assembledQuery) {
       return
     }
 
     this.unsubscribe()
-    this.subscription = getSubscription(assembledQuery, params, overlayDrafts && !query)
+    this.subscription = getSubscription(assembledQuery, params)
       .subscribe({
         next: documents =>
           this.setState({documents: documents.slice(0, limit), loading: false}),
         error: error =>
-          this.setState({error, query})
+          this.setState({error, query, loading: false})
       })
   }
 

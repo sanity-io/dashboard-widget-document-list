@@ -6,15 +6,12 @@ import sanityClient from 'part:@sanity/base/client'
 
 const draftId = nonDraftDoc => `drafts.${nonDraftDoc._id}`
 
-const prepareDocumentList = (incoming, overlayDrafts) => {
+const prepareDocumentList = incoming => {
   if (!incoming) {
     return Promise.resolve([])
   }
   const documents = Array.isArray(incoming) ? incoming : [incoming]
 
-  if (!overlayDrafts) {
-    return Promise.resolve(documents)
-  }
   const ids = documents
     .filter(doc => !doc._id.startsWith('draft.'))
     .map(draftId)
@@ -30,14 +27,14 @@ const prepareDocumentList = (incoming, overlayDrafts) => {
   })
 }
 
-const getSubscription = (query, params, overlayDrafts) =>
+const getSubscription = (query, params) =>
   sanityClient
     .listen(query, params, {events: ['welcome', 'mutation'], includeResult: false, visibility: 'query'})
     .pipe(switchMap(event => {
       return observableOf(1).pipe(
         event.type === 'welcome' ? tap() : delay(1000),
         mergeMap(() => sanityClient.fetch(query, params).then(incoming => {
-          return prepareDocumentList(incoming, overlayDrafts)
+          return prepareDocumentList(incoming)
         }).catch(error => {
           if (error.message.startsWith('Problems fetching docs')) {
             throw error

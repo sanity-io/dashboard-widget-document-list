@@ -15,6 +15,8 @@ sanity install dashboard-widget-document-list
 2. Update your `src/dashboardConfig.js` file by adding `{name: 'document-list'}` to the `widgets` array
 3. Restart your Studio
 
+*Note*: If a document in the result (as returned by the backend) has a draft, that draft is rendered instead of the published document.
+
 There are some options available:
 
 ### `title` (string)
@@ -70,22 +72,8 @@ Array of strings signifying which document (schema) types are fetched
 }
 ```
 
-### `overlayDrafts` (boolean)
-Show drafts in place of published documents (default: `true`). If set to `true`, documents in the list will have their drafts fetched and rendered instead. If set to `false`, documents (drafts and non-drafts alike) are just rendered in the order they are retrieved.
-
-```js
-{
-  name: 'document-list',
-  options: {
-    title: 'Fresh stuff',
-    order: '_createdAt desc',
-    overlayDrafts: false
-  }
-}
-```
-
 ### `query` (string) and `params` (object)
-Customized GROQ query with params for maximum control. If you use the query option, the `types`, `order`, `limit` and `overlayDrafts`, options will cease to function. You're on your own.
+Customized GROQ query with params for maximum control. If you use the query option, the `types`, `order`, and `limit` options will cease to function. You're on your own.
 
 ```js
 {
