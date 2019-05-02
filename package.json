@@ -1,7 +1,7 @@
 {
   "public": true,
   "name": "sanity-plugin-dashboard-widget-document-list",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "Sanity.io <hello@sanity.io>",
   "description": "Example dashboard widget for Sanity Content Studio",
   "homepage": "https://github.com/sanity-io/dashboard-widget-document-list#readme",
@@ -43,7 +43,8 @@
   },
   "peerDependencies": {
     "prop-types": "^15.6 || ^16",
-    "react": "^16"
+    "react": "^16",
+    "rxjs": "^6.1.0"
   },
   "dependencies": {
     "@sanity/base": "^0.140.9",
