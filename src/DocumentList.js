@@ -14,7 +14,6 @@ import styles from './DocumentList.css'
 const schemaTypeNames = schema.getTypeNames()
 
 class DocumentList extends React.Component {
-
   state = {
     documents: null,
     loading: true,
@@ -83,7 +82,6 @@ class DocumentList extends React.Component {
     }
   }
 
-
   render() {
     const {title, types} = this.props
     const {documents, loading, error} = this.state
@@ -96,31 +94,37 @@ class DocumentList extends React.Component {
         <div className={styles.content}>
           {error && <div>{error.message}</div>}
           {!error && loading && <Spinner center message="Loading..." />}
-          {(!error && !documents && !loading) && <div>Could not locate any documents :/</div>}
+          {!error && !documents && !loading && <div>Could not locate any documents :/</div>}
           <List>
-            {documents && documents.map(doc => {
-              const type = schema.get(doc._type)
-              return (
-                <Item key={doc._id}>
-                  <IntentLink
-                    intent="edit"
-                    params={{
-                      type: doc._type,
-                      id: doc._id
-                    }}
-                    className={styles.link}
-                  >
-                    <SanityPreview layout="default" type={type} value={doc} key={doc._id} />
-                  </IntentLink>
-                </Item>
-              )
-
-            })}
+            {documents &&
+              documents.map(doc => {
+                const type = schema.get(doc._type)
+                return (
+                  <Item key={doc._id}>
+                    <IntentLink
+                      intent="edit"
+                      params={{
+                        type: doc._type,
+                        id: doc._id
+                      }}
+                      className={styles.link}
+                    >
+                      <SanityPreview layout="default" type={type} value={doc} key={doc._id} />
+                    </IntentLink>
+                  </Item>
+                )
+              })}
           </List>
         </div>
         {types && types.length === 1 && (
           <div className={styles.footer}>
-            <IntentButton bleed color="primary" kind="simple" intent="create" params={{type: types[0]}}>
+            <IntentButton
+              bleed
+              color="primary"
+              kind="simple"
+              intent="create"
+              params={{type: types[0]}}
+            >
               Create new {types[0]}
             </IntentButton>
           </div>
