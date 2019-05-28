@@ -78,14 +78,15 @@ Array of strings signifying which document (schema) types are fetched
 
 ### `query` (string) and `queryParams` (object)
 
-Customized GROQ query with params for maximum control. If you use the query option, the `types`, `order`, and `limit` options will cease to function. You're on your own.
+Customized GROQ query with params for maximum control. If you use the query option, the `types`, `order`, and `limit` options will cease to function. You're on your own. You should also make sure to provide an `apiVersion` parameter.
 
 ```js
 {
   name: 'document-list',
   options: {
     title: 'Published books by title',
-    query: '*[_type == "book" && published == true] | order(title asc) [0...10]'
+    apiVersion: '2019-05-28',
+    query: '*[_type == "book" && published == true] | order(title asc) [0...10]',
   }
 }
 ```
@@ -95,6 +96,7 @@ Customized GROQ query with params for maximum control. If you use the query opti
   name: 'document-list',
   options: {
     title: 'My favorite documents',
+    apiVersion: '2019-05-28',
     query: '*[_id in $ids]',
     queryParams: {
       ids: ['ab2', 'c5z', '654']

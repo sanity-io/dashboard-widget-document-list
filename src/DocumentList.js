@@ -26,7 +26,8 @@ class DocumentList extends React.Component {
     query: PropTypes.string,
     queryParams: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     order: PropTypes.string,
-    limit: PropTypes.number
+    limit: PropTypes.number,
+    apiVersion: PropTypes.string
   }
 
   static defaultProps = {
@@ -35,24 +36,33 @@ class DocumentList extends React.Component {
     limit: 10,
     types: null,
     query: null,
-    queryParams: {}
+    queryParams: {},
+    apiVersion: undefined
+  }
+
+  constructor(props) {
+    super(props)
+
+    if (props.query && !props.apiVersion) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        '`query` provided to document list widget, but no `apiVersion` specified. Defaulting to v1.'
+      )
+    }
   }
 
   componentDidMount = () => {
-    const {query, limit} = this.props
+    const {query, limit, apiVersion} = this.props
     const {assembledQuery, params} = this.assembleQuery()
     if (!assembledQuery) {
       return
     }
 
     this.unsubscribe()
-    this.subscription = getSubscription(assembledQuery, params)
-      .subscribe({
-        next: documents =>
-          this.setState({documents: documents.slice(0, limit), loading: false}),
-        error: error =>
-          this.setState({error, query, loading: false})
-      })
+    this.subscription = getSubscription(assembledQuery, params, apiVersion).subscribe({
+      next: documents => this.setState({documents: documents.slice(0, limit), loading: false}),
+      error: error => this.setState({error, query, loading: false})
+    })
   }
 
   componentWillUnmount() {
