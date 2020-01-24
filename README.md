@@ -97,3 +97,18 @@ Customized GROQ query with params for maximum control. If you use the query opti
   }
 }
 ```
+
+### `createButtonText` (string)
+
+You can override the button default button text (`Create new ${types[0]}`) by setting `createButtonText` to a string of your choice. This doesn't support dynamic variables.
+
+```js
+{
+  name: 'document-list',
+  options: {
+    title: 'Blog posts',
+    query: '*[_type == "post"]',
+    createButtonText: 'Create new blog post'
+  }
+}
+```
