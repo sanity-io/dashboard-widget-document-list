@@ -49,6 +49,6 @@
   "dependencies": {
     "@sanity/base": "^0.140.9",
     "@sanity/components": "^0.140.9",
-    "lodash": "^4.17.11"
+    "lodash": "^4.17.15"
   }
 }
