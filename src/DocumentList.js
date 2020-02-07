@@ -28,6 +28,7 @@ class DocumentList extends React.Component {
     queryParams: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     order: PropTypes.string,
     limit: PropTypes.number,
+    createButton: PropTypes.bool,
     createButtonText: PropTypes.string
   }
 
@@ -38,6 +39,7 @@ class DocumentList extends React.Component {
     types: null,
     query: null,
     queryParams: {},
+    createButton: true,
     createButtonText: null
   }
 
@@ -87,7 +89,7 @@ class DocumentList extends React.Component {
 
 
   render() {
-    const {title, types, createButtonText} = this.props
+    const {title, types, createButton, createButtonText} = this.props
     const {documents, loading, error} = this.state
 
     return (
@@ -120,7 +122,7 @@ class DocumentList extends React.Component {
             })}
           </List>
         </div>
-        {types && types.length === 1 && (
+        {types && types.length === 1 && createButton && (
           <div className={styles.footer}>
             <IntentButton bleed color="primary" kind="simple" intent="create" params={{type: types[0]}}>
               {createButtonText || `Create new ${types[0]}`}
