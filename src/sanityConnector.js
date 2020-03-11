@@ -13,7 +13,7 @@ const prepareDocumentList = incoming => {
   const documents = Array.isArray(incoming) ? incoming : [incoming]
 
   const ids = documents
-    .filter(doc => !doc._id.startsWith('draft.'))
+    .filter(doc => !doc._id.startsWith('drafts.'))
     .map(draftId)
 
   return sanityClient.fetch('*[_id in $ids]', {ids}).then(drafts => {
