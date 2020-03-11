@@ -7,6 +7,7 @@ import Spinner from 'part:@sanity/components/loading/spinner'
 import schema from 'part:@sanity/base/schema'
 import IntentButton from 'part:@sanity/components/buttons/intent'
 import {List, Item} from 'part:@sanity/components/lists/default'
+import {getPublishedId} from 'part:@sanity/base/util/draft-utils'
 import {intersection} from 'lodash'
 import {getSubscription} from './sanityConnector'
 import styles from './DocumentList.css'
@@ -108,7 +109,7 @@ class DocumentList extends React.Component {
                     intent="edit"
                     params={{
                       type: doc._type,
-                      id: doc._id
+                      id: getPublishedId(doc._id)
                     }}
                     className={styles.link}
                   >
