@@ -22,8 +22,7 @@
     "build": "babel src -d lib --copy-files",
     "clean": "rimraf lib",
     "prebuild": "npm run clean",
-    "prepublishOnly": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
