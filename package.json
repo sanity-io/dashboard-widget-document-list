@@ -42,13 +42,13 @@
     "rimraf": "^2.6.3"
   },
   "peerDependencies": {
-    "prop-types": "^15.6 || ^16",
-    "react": "^16",
+    "@sanity/base": "^1",
+    "@sanity/components": "^1",
+    "prop-types": "^15.6 || ^16 || ^17",
+    "react": "^16 || ^17",
     "rxjs": "^6.1.0"
   },
   "dependencies": {
-    "@sanity/base": "^0.140.9",
-    "@sanity/components": "^0.140.9",
     "lodash": "^4.17.15"
   }
 }
