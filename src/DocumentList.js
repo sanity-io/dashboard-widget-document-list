@@ -31,6 +31,7 @@ class DocumentList extends React.Component {
     limit: PropTypes.number,
     showCreateButton: PropTypes.bool,
     createButtonText: PropTypes.string,
+    apiVersion: PropTypes.string
   }
 
   static defaultProps = {
@@ -42,17 +43,18 @@ class DocumentList extends React.Component {
     queryParams: {},
     showCreateButton: true,
     createButtonText: null,
+    apiVersion: 'v1'
   }
 
   componentDidMount = () => {
-    const {query, limit} = this.props
+    const {query, limit, apiVersion} = this.props
     const {assembledQuery, params} = this.assembleQuery()
     if (!assembledQuery) {
       return
     }
 
     this.unsubscribe()
-    this.subscription = getSubscription(assembledQuery, params)
+    this.subscription = getSubscription(assembledQuery, params, apiVersion)
       .subscribe({
         next: documents =>
           this.setState({documents: documents.slice(0, limit), loading: false}),
