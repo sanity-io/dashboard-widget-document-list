@@ -112,3 +112,16 @@ You can override the button default button text (`Create new ${types[0]}`) by se
   }
 }
 ```
+
+### `showCreateButton` (boolean)
+
+You can disable the create button altogether by passing a `showCreateButton` boolean:
+
+```js
+{
+  name: 'document-list',
+  options: {
+    showCreateButton: false
+  }
+}
+```
