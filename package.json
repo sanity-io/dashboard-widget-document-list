@@ -19,35 +19,31 @@
     "url": "https://github.com/sanity-io/dashboard-widget-document-list/issues"
   },
   "scripts": {
-    "build": "babel src -d lib --copy-files",
+    "build": "sanipack build",
+    "test": "sanipack verify",
     "clean": "rimraf lib",
     "prebuild": "npm run clean",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build && npm test"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sanity-io/dashboard-widget-document-list.git"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
-    "babel-plugin-syntax-class-properties": "^6.13.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
     "eslint": "^4.3.0",
     "eslint-config-sanity": "^2.1.4",
     "eslint-plugin-react": "^7.1.0",
-    "rimraf": "^2.6.3"
+    "rimraf": "^2.7.1",
+    "sanipack": "^1.0.8"
   },
   "peerDependencies": {
-    "@sanity/base": "^1",
-    "@sanity/components": "^1",
-    "prop-types": "^15.6 || ^16 || ^17",
-    "react": "^16 || ^17",
-    "rxjs": "^6.1.0"
+    "@sanity/base": ">=1",
+    "react": "^16 || ^17"
   },
   "dependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "prop-types": "^15.7.2",
+    "rxjs": "^6.0.0"
   }
 }
