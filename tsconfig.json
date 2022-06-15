@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "target": "esnext",
+    "module": "esnext",
+    "sourceMap": false,
+    "inlineSourceMap": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "downlevelIteration": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "lib",
+    "baseUrl": ".",
+    "checkJs": false
+  },
+  "include": ["src/**/*", "node_modules/microbundle/index.d.ts"]
+}
