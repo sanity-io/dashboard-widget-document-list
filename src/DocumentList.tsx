@@ -48,9 +48,8 @@ export function DocumentList(props: DocumentListConfig) {
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<Error | undefined>()
 
-  const client = useClient()
+  const versionedClient = useClient({apiVersion})
   const schema = useSchema()
-  const versionedClient = useMemo(() => client.withConfig({apiVersion}), [client, apiVersion])
 
   const {assembledQuery, params} = useMemo(() => {
     if (query) {
