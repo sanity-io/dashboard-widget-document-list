@@ -72,7 +72,7 @@ Array of strings signifying which document (schema) types are fetched
 }
 ```
 
-### `query` (string) and `params` (object)
+### `query` (string) and `queryParams` (object)
 Customized GROQ query with params for maximum control. If you use the query option, the `types`, `order`, and `limit` options will cease to function. You're on your own.
 
 ```js
@@ -91,7 +91,7 @@ Customized GROQ query with params for maximum control. If you use the query opti
   options: {
     title: 'My favorite documents',
     query: '*[_id in $ids]',
-    params: {
+    queryParams: {
       ids: ['ab2', 'c5z', '654']
     }
   }
