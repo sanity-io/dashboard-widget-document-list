@@ -1,9 +1,8 @@
 import React, {useEffect, useMemo, useState} from 'react'
-import {IntentButton, SanityPreview} from 'sanity/_unstable'
 import {getPublishedId, useClient, useSchema} from 'sanity'
 import {intersection} from 'lodash'
 import {getSubscription} from './sanityConnector'
-import {SanityDocument} from 'sanity'
+import {SanityDocument, IntentButton, SanityPreview} from 'sanity'
 import {Card, Flex, Spinner, Stack} from '@sanity/ui'
 import {DashboardWidgetContainer} from '@sanity/dashboard'
 
