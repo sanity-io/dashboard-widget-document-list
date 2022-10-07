@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0-v3-studio.4](https://github.com/sanity-io/dashboard-widget-document-list/compare/v3.0.0-v3-studio.3...v3.0.0-v3-studio.4) (2022-10-07)
+
+### Bug Fixes
+
+- **deps:** dev-preview.21 ([c62accc](https://github.com/sanity-io/dashboard-widget-document-list/commit/c62accca57576d879d06d9def967e7b3d6d6a0f3))
+
 ## [3.0.0-v3-studio.3](https://github.com/sanity-io/dashboard-widget-document-list/compare/v3.0.0-v3-studio.2...v3.0.0-v3-studio.3) (2022-09-15)
 
 ### Features
