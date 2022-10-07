@@ -82,7 +82,7 @@
     "@sanity/dashboard": "studio-v3"
   },
   "dependencies": {
-    "@sanity/incompatible-plugin": "^1.0.1",
+    "@sanity/incompatible-plugin": "^1.0.4",
     "@sanity/ui": "^0.38.0",
     "lodash": "^4.17.15",
     "rxjs": "^6.0.0"
