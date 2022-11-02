@@ -4,17 +4,21 @@
     "moduleResolution": "node",
     "target": "esnext",
     "module": "esnext",
+    "esModuleInterop": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "strict": true,
     "sourceMap": false,
     "inlineSourceMap": false,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "isolatedModules": true,
     "downlevelIteration": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     "outDir": "lib",
-    "baseUrl": ".",
-    "checkJs": false
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "checkJs": false,
+    "rootDir": "src"
   },
-  "include": ["src/**/*", "node_modules/microbundle/index.d.ts"]
+  "include": ["src/**/*"]
 }

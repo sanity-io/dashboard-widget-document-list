@@ -18,7 +18,7 @@ function prepareDocumentList(
   const ids = documents.filter((doc) => !doc._id.startsWith('drafts.')).map(draftId)
 
   return client
-    .fetch('*[_id in $ids]', {ids})
+    .fetch<SanityDocument[]>('*[_id in $ids]', {ids})
     .then((drafts) => {
       const outgoing = documents.map((doc) => {
         const foundDraft = drafts.find((draft) => draft._id === draftId(doc))

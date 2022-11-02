@@ -57,7 +57,7 @@ export function DocumentList(props: DocumentListConfig) {
 
     const documentTypes = schema.getTypeNames().filter((typeName) => {
       const schemaType = schema.get(typeName)
-      return schemaType.type && schemaType.type.name === 'document'
+      return schemaType?.type?.name === 'document'
     })
 
     return {
@@ -142,7 +142,11 @@ function MenuEntry({doc}: {doc: SanityDocument}) {
         }}
         style={{width: '100%'}}
       >
-        <SanityPreview layout="default" schemaType={type} value={doc} key={doc._id} />
+        {type ? (
+          <SanityPreview layout="default" schemaType={type} value={doc} key={doc._id} />
+        ) : (
+          'Schema-type missing'
+        )}
       </IntentButton>
     </Card>
   )
