@@ -30,7 +30,7 @@ Add dashboard-widget-document-list as a widget to @sanity/dashboard plugin in sa
 
 ```js
 import { dashboardTool } from "@sanity/dashboard";
-import { catsWidget } from "sanity-plugin-dashboard-widget-document-list";
+import { documentListWidget } from "sanity-plugin-dashboard-widget-document-list";
 
 export default defineConfig({
   // ...
