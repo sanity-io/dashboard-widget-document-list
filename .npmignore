@@ -1,7 +1,9 @@
-.DS_Store
-.babelrc
-.eslintignore
+/test
+/coverage
+.editorconfig
 .eslintrc
-/src
-/example
-/node_modules
+.gitignore
+.github
+.prettierrc
+.travis.yml
+.nyc_output

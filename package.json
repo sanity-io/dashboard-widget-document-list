@@ -1,10 +1,7 @@
 {
-  "public": true,
   "name": "sanity-plugin-dashboard-widget-document-list",
-  "version": "0.0.13",
-  "author": "Sanity.io <hello@sanity.io>",
-  "description": "Example dashboard widget for Sanity Content Studio",
-  "homepage": "https://github.com/sanity-io/dashboard-widget-document-list#readme",
+  "version": "3.0.0-v3-studio.7",
+  "description": "> **NOTE**",
   "keywords": [
     "sanity",
     "plugin",
@@ -13,37 +10,86 @@
     "widget",
     "documents"
   ],
-  "main": "lib/index.js",
-  "license": "MIT",
+  "homepage": "https://github.com/sanity-io/dashboard-widget-document-list#readme",
   "bugs": {
     "url": "https://github.com/sanity-io/dashboard-widget-document-list/issues"
   },
-  "scripts": {
-    "build": "sanipack build",
-    "test": "sanipack verify",
-    "clean": "rimraf lib",
-    "prebuild": "npm run clean",
-    "prepublishOnly": "npm run build && npm test"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sanity-io/dashboard-widget-document-list.git"
+    "url": "git@github.com:sanity-io/dashboard-widget-document-list.git"
   },
-  "devDependencies": {
-    "babel-eslint": "^7.2.3",
-    "eslint": "^4.3.0",
-    "eslint-config-sanity": "^2.1.4",
-    "eslint-plugin-react": "^7.1.0",
-    "rimraf": "^2.7.1",
-    "sanipack": "^1.0.8"
+  "license": "MIT",
+  "author": "Sanity.io <hello@sanity.io>",
+  "exports": {
+    ".": {
+      "types": "./lib/src/index.d.ts",
+      "source": "./src/index.ts",
+      "import": "./lib/index.esm.js",
+      "require": "./lib/index.js",
+      "default": "./lib/index.esm.js"
+    },
+    "./package.json": "./package.json"
   },
-  "peerDependencies": {
-    "@sanity/base": ">=1",
-    "react": "^16 || ^17"
+  "main": "./lib/index.js",
+  "module": "./lib/index.esm.js",
+  "source": "./src/index.ts",
+  "types": "./lib/src/index.d.ts",
+  "files": [
+    "src",
+    "lib",
+    "v2-incompatible.js",
+    "sanity.json"
+  ],
+  "scripts": {
+    "prebuild": "npm run clean && plugin-kit verify-package --silent && pkg-utils",
+    "build": "pkg-utils build --strict",
+    "clean": "rimraf lib",
+    "compile": "tsc --noEmit",
+    "link-watch": "plugin-kit link-watch",
+    "lint": "eslint .",
+    "prepare": "husky install",
+    "prepublishOnly": "npm run build",
+    "watch": "pkg-utils watch"
   },
   "dependencies": {
+    "@sanity/incompatible-plugin": "^1.0.4",
+    "@sanity/ui": "1.0.0-beta.32",
     "lodash": "^4.17.15",
-    "prop-types": "^15.7.2",
     "rxjs": "^6.0.0"
-  }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
+    "@sanity/dashboard": "^3.0.0-v3-studio.6",
+    "@sanity/pkg-utils": "^1.17.2",
+    "@sanity/plugin-kit": "^2.1.5",
+    "@sanity/semantic-release-preset": "^2.0.2",
+    "@types/react": "^18",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-sanity": "^6.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "prettier-plugin-packagejson": "^2.3.0",
+    "react": "^18",
+    "rimraf": "^3.0.2",
+    "sanity": "3.0.0-rc.0",
+    "typescript": "^4.8.4"
+  },
+  "peerDependencies": {
+    "@sanity/dashboard": "studio-v3 || ^3.0.0-v3-studio.6",
+    "react": "^18",
+    "sanity": "dev-preview || 3.0.0-rc.0"
+  },
+  "engines": {
+    "node": ">=14"
+  },
+  "public": true,
+  "sanityExchangeUrl": "https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-document-list"
 }
