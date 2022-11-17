@@ -1,10 +1,7 @@
 # sanity-plugin-dashboard-widget-document-list
 
-> **NOTE**
->
-> This is the **Sanity Studio v3 version** of dashboard-widget-document-list.
->
-> For the v2 version, please refer to the [v2-branch](https://github.com/sanity-io/dashboard-widget-document-list).
+>This is a **Sanity Studio v3** plugin.
+> For the v2 version, please refer to the [v2-branch](https://github.com/sanity-io/dashboard-widget-document-list/tree/studio-v2).
 
 ## What is it?
 
@@ -13,13 +10,13 @@ Dashboard widget for the Sanity Content Studio which displays a list of document
 ## Install
 
 ```
-npm install --save sanity-plugin-dashboard-widget-document-list@studio-v3
+npm install --save sanity-plugin-dashboard-widget-document-list
 ```
 
 or
 
 ```
-yarn add sanity-plugin-dashboard-widget-document-list@studio-v3
+yarn add sanity-plugin-dashboard-widget-document-list
 ```
 
 Ensure that you have followed install and usage instructions for @sanity/dashboard.
