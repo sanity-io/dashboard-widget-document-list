@@ -2,3 +2,7 @@
 lib
 node_modules
 example/node_modules
+yalc.lock
+.yalc
+*.iml
+.idea

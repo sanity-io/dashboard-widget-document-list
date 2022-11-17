@@ -1,7 +1,9 @@
 # dashboard-widget-document-list
+
+>This is a **Sanity Studio v2** plugin.
+> For the v3 version, please refer to the [v3-branch](https://github.com/sanity-io/dashboard-widget-document-list).
+
 Dashboard widget for the Sanity Content Studio which displays a list of documents
-
-
 
 ## Usage
 Assuming you already have a functional Dashboard in your Sanity Content Studio.
@@ -9,7 +11,7 @@ Assuming you already have a functional Dashboard in your Sanity Content Studio.
 1. Install this widget in your Studio folder like so:
 
 ```
-sanity install dashboard-widget-document-list
+sanity install dashboard-widget-document-list@studio-v2
 ```
 
 2. Update your `src/dashboardConfig.js` file by adding `{name: 'document-list'}` to the `widgets` array
