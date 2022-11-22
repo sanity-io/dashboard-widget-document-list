@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sanity-io/dashboard-widget-document-list.git"
+    "url": "git@github.com:sanity-io/dashboard-widget-document-list.git"
   },
   "license": "MIT",
   "author": "Sanity.io <hello@sanity.io>",
