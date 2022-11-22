@@ -10,8 +10,15 @@ Assuming you already have a functional Dashboard in your Sanity Content Studio.
 
 1. Install this widget in your Studio folder like so:
 
+```sh
+yarn add sanity-plugin-dashboard-widget-document-list@studio-v2
 ```
-sanity install dashboard-widget-document-list@studio-v2
+
+Next, add `"dashboard-widget-document-list"` to `sanity.json` plugins array:
+```json
+"plugins": [
+  "dashboard-widget-document-list"
+]
 ```
 
 2. Update your `src/dashboardConfig.js` file by adding `{name: 'document-list'}` to the `widgets` array
