@@ -2,7 +2,7 @@ import React, {useEffect, useMemo, useState} from 'react'
 import {getPublishedId, useClient, useSchema} from 'sanity'
 import {intersection} from 'lodash'
 import {getSubscription} from './sanityConnector'
-import {SanityDocument, IntentButton, SanityPreview} from 'sanity'
+import {SanityDocument, IntentButton, Preview} from 'sanity'
 import {Card, Flex, Spinner, Stack} from '@sanity/ui'
 import {DashboardWidgetContainer} from '@sanity/dashboard'
 
@@ -143,7 +143,7 @@ function MenuEntry({doc}: {doc: SanityDocument}) {
         style={{width: '100%'}}
       >
         {type ? (
-          <SanityPreview layout="default" schemaType={type} value={doc} key={doc._id} />
+          <Preview layout="default" schemaType={type} value={doc} key={doc._id} />
         ) : (
           'Schema-type missing'
         )}
