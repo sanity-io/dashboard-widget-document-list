@@ -22,34 +22,30 @@
   "author": "Sanity.io <hello@sanity.io>",
   "exports": {
     ".": {
-      "types": "./lib/src/index.d.ts",
       "source": "./src/index.ts",
-      "import": "./lib/index.esm.js",
-      "require": "./lib/index.js",
-      "default": "./lib/index.esm.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
     },
     "./package.json": "./package.json"
   },
-  "main": "./lib/index.js",
-  "module": "./lib/index.esm.js",
-  "source": "./src/index.ts",
-  "types": "./lib/src/index.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "src",
-    "lib",
+    "dist",
     "v2-incompatible.js",
     "sanity.json"
   ],
   "scripts": {
-    "prebuild": "npm run clean && plugin-kit verify-package --silent && pkg-utils",
-    "build": "pkg-utils build --strict",
-    "clean": "rimraf lib",
+    "build": "plugin-kit verify-package --silent && pkg-utils build --strict --check --clean",
     "compile": "tsc --noEmit",
     "link-watch": "plugin-kit link-watch",
     "lint": "eslint .",
     "prepare": "husky",
     "prepublishOnly": "npm run build",
-    "watch": "pkg-utils watch"
+    "watch": "pkg-utils watch --strict"
   },
   "dependencies": {
     "@sanity/incompatible-plugin": "^1.0.4",
@@ -78,7 +74,6 @@
     "prettier": "^3.3.3",
     "prettier-plugin-packagejson": "^2.5.1",
     "react": "^18",
-    "rimraf": "^6.0.1",
     "sanity": "^3.52.2",
     "typescript": "^5.5.4"
   },
@@ -91,5 +86,8 @@
     "node": ">=18"
   },
   "public": true,
-  "sanityExchangeUrl": "https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-document-list"
+  "sanityExchangeUrl": "https://www.sanity.io/plugins/sanity-plugin-dashboard-widget-document-list",
+  "browserslist": "extends @sanity/browserslist-config",
+  "sideEffects": false,
+  "type": "module"
 }
