@@ -1,6 +1,6 @@
-import DocumentList, {DocumentListConfig} from './DocumentList'
-import React from 'react'
-import {LayoutConfig, DashboardWidget} from '@sanity/dashboard'
+import type {DashboardWidget, LayoutConfig} from '@sanity/dashboard'
+
+import DocumentList, {type DocumentListConfig} from './DocumentList'
 
 export interface DocumentListWidgetConfig extends DocumentListConfig {
   layout?: LayoutConfig

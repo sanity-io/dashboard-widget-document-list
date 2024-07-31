@@ -1,14 +1,14 @@
-import {Observable, of as observableOf} from 'rxjs'
-import {delay, mergeMap, switchMap, tap} from 'rxjs/operators'
+import type {SanityClient} from '@sanity/client'
 import uniqBy from 'lodash/uniqBy'
-import {SanityClient} from '@sanity/client'
-import {SanityDocument} from 'sanity'
+import {type Observable, of as observableOf} from 'rxjs'
+import {delay, mergeMap, switchMap, tap} from 'rxjs/operators'
+import type {SanityDocument} from 'sanity'
 
 const draftId = (nonDraftDoc: SanityDocument) => `drafts.${nonDraftDoc._id}`
 
 function prepareDocumentList(
   incoming: SanityDocument | SanityDocument[],
-  client: SanityClient
+  client: SanityClient,
 ): Promise<SanityDocument[]> {
   if (!incoming) {
     return Promise.resolve([])
@@ -33,8 +33,9 @@ function prepareDocumentList(
 
 export function getSubscription(
   query: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   params: Record<string, any>,
-  client: SanityClient
+  client: SanityClient,
 ): Observable<SanityDocument[]> {
   return client
     .listen(query, params, {
@@ -57,11 +58,11 @@ export function getSubscription(
                   throw error
                 }
                 throw new Error(
-                  `Query failed ${query} and ${JSON.stringify(params)}. Error: ${error.message}`
+                  `Query failed ${query} and ${JSON.stringify(params)}. Error: ${error.message}`,
                 )
-              })
-          )
+              }),
+          ),
         )
-      })
+      }),
     )
 }

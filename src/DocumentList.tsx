@@ -1,15 +1,23 @@
-import React, {useEffect, useMemo, useState} from 'react'
-import {getPublishedId, useClient, useSchema} from 'sanity'
-import {intersection} from 'lodash'
-import {getSubscription} from './sanityConnector'
-import {SanityDocument, IntentButton, Preview} from 'sanity'
-import {Card, Flex, Spinner, Stack} from '@sanity/ui'
 import {DashboardWidgetContainer} from '@sanity/dashboard'
+import {Card, Flex, Spinner, Stack} from '@sanity/ui'
+import {intersection} from 'lodash'
+import {type ReactNode, useEffect, useMemo, useState} from 'react'
+import {
+  getPublishedId,
+  IntentButton,
+  Preview,
+  type SanityDocument,
+  useClient,
+  useSchema,
+} from 'sanity'
+
+import {getSubscription} from './sanityConnector'
 
 export interface DocumentListConfig {
   title?: string
   types?: string[]
   query?: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   queryParams?: Record<string, any>
   order?: string
   limit?: number
@@ -27,7 +35,7 @@ const defaultProps = {
   apiVersion: 'v1',
 }
 
-export function DocumentList(props: DocumentListConfig) {
+export function DocumentList(props: DocumentListConfig): ReactNode {
   const {
     query,
     limit,
@@ -97,7 +105,7 @@ export function DocumentList(props: DocumentListConfig) {
           <IntentButton
             mode="bleed"
             style={{width: '100%'}}
-            paddingX={2}
+            // paddingX={2}
             paddingY={4}
             tone="primary"
             type="button"
@@ -134,8 +142,9 @@ function MenuEntry({doc}: {doc: SanityDocument}) {
       <IntentButton
         intent="edit"
         mode="bleed"
-        padding={1}
-        radius={0}
+        tooltipProps={{}}
+        // padding={1}
+        // radius={0}
         params={{
           type: doc._type,
           id: getPublishedId(doc._id),
