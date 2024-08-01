@@ -5,6 +5,16 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0](https://github.com/sanity-io/dashboard-widget-document-list/compare/v1.0.1...v2.0.0) (2024-08-01)
+
+### ⚠ BREAKING CHANGES
+
+- upgrade dependencies (#24)
+
+### Bug Fixes
+
+- upgrade dependencies ([#24](https://github.com/sanity-io/dashboard-widget-document-list/issues/24)) ([2d1563f](https://github.com/sanity-io/dashboard-widget-document-list/commit/2d1563f8f6f319c55e1ba58dfe6534c3da03828e))
+
 ## [1.0.1](https://github.com/sanity-io/dashboard-widget-document-list/compare/v1.0.0...v1.0.1) (2022-11-25)
 
 ### Bug Fixes
