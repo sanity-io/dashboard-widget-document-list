@@ -74,7 +74,7 @@
     "prettier": "^3.3.3",
     "prettier-plugin-packagejson": "^2.5.1",
     "react": "^18",
-    "sanity": "^3.52.2",
+    "sanity": "^3.62.0",
     "semantic-release": "^24.0.0",
     "typescript": "5.5.4"
   },
