@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.0](https://github.com/sanity-io/dashboard-widget-document-list/compare/v2.0.0...v2.1.0) (2025-03-07)
+
+### Features
+
+- add react 19 to peer deps ([7a2a8d2](https://github.com/sanity-io/dashboard-widget-document-list/commit/7a2a8d23efeb3b2de51b6c0b50f5d34ac77fbe26))
+
 ## [2.0.0](https://github.com/sanity-io/dashboard-widget-document-list/compare/v1.0.1...v2.0.0) (2024-08-01)
 
 ### ⚠ BREAKING CHANGES
