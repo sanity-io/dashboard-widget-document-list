@@ -48,8 +48,8 @@
     "watch": "pkg-utils watch --strict"
   },
   "dependencies": {
-    "@sanity/incompatible-plugin": "^1.0.4",
-    "@sanity/ui": "^2.8.8",
+    "@sanity/incompatible-plugin": "^1.0.5",
+    "@sanity/ui": "^2.15.2",
     "lodash": "^4.17.21",
     "rxjs": "^7.8.1"
   },
@@ -79,9 +79,9 @@
     "typescript": "5.5.4"
   },
   "peerDependencies": {
-    "@sanity/dashboard": "^4.0.0",
-    "react": "^18",
-    "sanity": "^3.0.0"
+    "@sanity/dashboard": "^4",
+    "react": "^18.3 || ^19",
+    "sanity": "^3"
   },
   "engines": {
     "node": ">=18"
