@@ -1,6 +1,5 @@
 # sanity-plugin-dashboard-widget-document-list
 
-> This is a **Sanity Studio v3** plugin.
 > For the v2 version, please refer to the [v2-branch](https://github.com/sanity-io/dashboard-widget-document-list/tree/studio-v2).
 
 ## What is it?
