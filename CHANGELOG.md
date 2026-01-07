@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.3](https://github.com/sanity-io/dashboard-widget-document-list/compare/v2.1.2...v2.1.3) (2026-01-07)
+
+### Bug Fixes
+
+- **deps:** allow v5 studio peer deps ([#30](https://github.com/sanity-io/dashboard-widget-document-list/issues/30)) ([8a077cf](https://github.com/sanity-io/dashboard-widget-document-list/commit/8a077cfd3786ea324c9ba176abcc8066078089d6))
+
 ## [2.1.2](https://github.com/sanity-io/dashboard-widget-document-list/compare/v2.1.1...v2.1.2) (2025-12-29)
 
 ### Bug Fixes
